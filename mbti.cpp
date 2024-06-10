@@ -19,18 +19,18 @@ struct Person {
     PersonalityType personality;
     vector<Question*> answers;  
 
-    void takeMBTITest(const vector<Question>& test) { 
-        for (const auto& question : test) {
+    void takeMBTITest(const Question test[20]) { 
+        for (int i = 0; i < 20; ++i) {
             int userAnswer;
             system("CLS");
             x:
-            cout << question.prompt << "\n1. Tidak Setuju \n2. Kurang Setuju \n3. Netral \n4. Setuju \n5. Sangat Setuju \nJawaban anda: ";
+            cout << test[i].prompt << "\n1. Tidak Setuju \n2. Kurang Setuju \n3. Netral \n4. Setuju \n5. Sangat Setuju \nJawaban anda: ";
             cin >> userAnswer;
             if (userAnswer < 1 || userAnswer > 5) {
                 cout << "Input jawaban yang sesuai (1-5)!\n";
                 goto x;
             }
-            Question* ans = new Question{question.prompt, userAnswer};  
+            Question* ans = new Question{test[i].prompt, userAnswer};  
             answers.push_back(ans);
         }
     }
@@ -221,7 +221,7 @@ struct Person {
 
         string pattern = combinePatterns(personality.type, height, width);
         cout << "Personality Type for " << name << ": \n" << pattern << "\n" << personality.description << endl;
-        system("pause");
+               system("pause");
     }
 };
 
@@ -252,7 +252,7 @@ void tabelHasil(const vector<Person*>& people) {
 }
 
 void garis() {
-    cout << string( 70, '=') << endl;
+    cout << string(70, '=') << endl;
 }
 
 void welcomeMessage() { 
@@ -276,7 +276,7 @@ int main() {
     vector<Person*> people;
     int n;
 
-    vector<Question> test = {
+    Question test[20] = {
         {"Ketika saya menghadiri sebuah acara sosial yang besar, saya merasa bersemangat dan energik.", 0},
         {"Ketika menghadapi masalah, saya mencari solusi yang praktis dan dapat segera diterapkan.", 0},
         {"Saya mempertimbangkan perasaan dan nilai-nilai pribadi untuk membuat keputusan.", 0},
@@ -293,7 +293,7 @@ int main() {
         {"Dalam merencanakan masa depan, saya merencanakan langkah-langkah yang jelas dan realistis.", 0},
         {"Dalam bekerja dengan orang lain, yang lebih penting bagi saya membangun hubungan yang baik dan mendukung.", 0},
         {"Saya merasa lebih nyaman ketika memiliki struktur dan aturan yang jelas.", 0},
-        {"Saya mersepon situasi yang baru atau tidak dikenal dengan antusias dan segera berinteraksi dengan orang-orang.", 0},
+        {"Saya merespon situasi yang baru atau tidak dikenal dengan antusias dan segera berinteraksi dengan orang-orang.", 0},
         {"Saya lebih suka mematuhi metode yang telah terbukti dan familiar.", 0},
         {"Saya merasa tersinggung jika kritik tersebut tidak mempertimbangkan perasaan saya.", 0},
         {"Ketika bekerja dalam proyek kelompok, saya lebih suka mengorganisir tugas dan memastikan semua berjalan sesuai rencana.", 0}

@@ -17,7 +17,7 @@ struct Question {
 struct Person { 
     string name;
     PersonalityType personality;
-    vector<Question*> answers;  
+    vector <Question*> answers;  
 
     void takeMBTITest(const Question test[20]) { 
         for (int i = 0; i < 20; ++i) {
